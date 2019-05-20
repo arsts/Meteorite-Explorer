@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class SearchResult extends Component {
-  render() {
+const SearchResult = ({ meteoriteData }) => {
+  console.log(meteoriteData);
+  
     return (
       <div>
-        
+        <table>
+          <thead></thead>
+          <tbody>
+            <tr></tr>
+          </tbody>
+        </table>
       </div>
     )
   }
-}
+
+export default SearchResult;
