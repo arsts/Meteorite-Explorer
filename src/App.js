@@ -10,7 +10,8 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
   constructor() {
     super();
     this.state = {
-      'meteoriteData': []
+      meteoritesData: [],
+      searchTerm: ''
       
     }
   }
@@ -18,12 +19,11 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
   getMeteoriteData = () => 
     fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
      .then(response => response.json())
-     .then(data => this.setState({'meteoriteData': data}));
+     .then(data => this.setState({'meteoritesData': data}));
 
   componentDidMount() {
     this.getMeteoriteData();
-    console.log(this.state.meteoriteData);
-    
+    console.log(this.state.meteoritesData);
   }
   
   
@@ -32,9 +32,15 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
     <div className="App">
           <header className="App-header">
             <h1>Meteorite Explorer</h1>
-            <SearchPanel />
-            <SearchResult meteoriteData={this.state.meteoriteData} />
+            <SearchPanel searchTerm={this.state.searchTerm} />
           </header>
+          <main>
+            <SearchResult meteoritesData={this.state.meteoritesData} />
+          </main>
+          <footer>
+
+          </footer>
+
         </div>
     )
   }
