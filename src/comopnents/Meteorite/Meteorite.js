@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 class Meteorite extends Component {
   render() {
     const { name, id, nametype, recclass, mass, fall, year, reclat, reclong } = this.props.meteorite;
-
-    
+    const date = new Date(year)   
     
     return (  
         <tr>
@@ -14,7 +13,7 @@ class Meteorite extends Component {
           <td>{recclass}</td>
           <td>{mass}</td>
           <td>{fall}</td>
-          <td>{year}</td> 
+          <td>{date.getFullYear().toString()}</td> 
           <td>{reclat}</td> 
           <td>{reclong}</td> 
         </tr>

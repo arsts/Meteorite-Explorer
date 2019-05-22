@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 
 export class SearchPanel extends Component {
-  
-
-
-  
-   
-  
 
   render() {
     return (
-      <div>
-        <label></label>
+
+        <form>
         <input 
         type="text" 
-        placeholder="Enter search items"
+        placeholder="Enter meteorite name"
         
         onChange={this.onChange}
         >
 
         </input>
-        <button>Submit</button>
-      </div>
+        <input 
+        type="submit" 
+        value="Submit"
+        >
+        </input>
+
+        </form>
+
     )
   }
 }
