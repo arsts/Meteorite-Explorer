@@ -1,4 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export class SearchPanel extends Component {
   constructor(props) {
@@ -11,23 +15,37 @@ export class SearchPanel extends Component {
   
   render() {
     return (
-        <form>
-        <input 
-        type="text" 
-        name="searchterm"
-        placeholder="Enter meteorite name"
-        value={this.props.searchTerm}
-        onChange={this.handleSearchChange}
-        >
-
-        </input>
-        <input 
-        type="submit" 
-        value="Submit"
-        >
-        </input>
-
-        </form>
+      <Form>
+        <Form.Group controlId="formBasicEmail">
+        <Container>
+          <Row>
+            <Col>
+              <Form.Control
+                type="text"
+                size="lg"
+                name="searchterm"
+                placeholder="Enter meteorite name"
+                value={this.props.searchTerm}
+                onChange={this.handleSearchChange}
+              />
+            </Col>
+            <Col md="auto">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  value="Submit"
+                  size="lg"
+                >
+                  Submit
+                </Button>
+            </Col>
+          </Row>
+        </Container>
+          
+        
+        </Form.Group>
+        
+      </Form>
 
     )
   }

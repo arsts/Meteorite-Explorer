@@ -1,6 +1,9 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 import Meteorite from '../Meteorite/Meteorite';
+
+
+
 
 export class SearchResult extends React.Component {
   render() { 
@@ -10,7 +13,7 @@ export class SearchResult extends React.Component {
     return (
       
       
-      <Table striped bordered hover>
+      <Table responsive striped bordered hover>
           <thead>
             <tr>
               <th>Name</th>
@@ -40,21 +43,3 @@ export default SearchResult
 
 
 
-// /<Table striped bordered hover>
-//   <thead>
-//     <tr>
-
-//       <th>#</th>
-//       <th>Tset</th>
-//       <th>Last Name</th>
-//       <th>Username</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <Meteorite />
-//     <Meteorite />
-//     <Meteorite />
-//     <Meteorite />
-
-//   </tbody>
-// </Table>
