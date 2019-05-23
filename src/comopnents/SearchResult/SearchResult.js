@@ -3,8 +3,13 @@ import { Table } from 'react-bootstrap';
 import Meteorite from '../Meteorite/Meteorite';
 
 export class SearchResult extends React.Component {
-  render() {   
+  render() { 
+    const searchTerm = this.props.searchTerm;
+    const filteredMeteorites = this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(searchTerm.toLowerCase())); 
+    
     return (
+      
+      
       <Table striped bordered hover>
           <thead>
             <tr>
@@ -17,10 +22,11 @@ export class SearchResult extends React.Component {
               <th>Year</th>
               <th>Latitude</th>
               <th>Longitude</th>
+              
             </tr>
           </thead>
           <tbody>
-            {this.props.meteoritesData.map(meteorite => (
+            {filteredMeteorites.map(meteorite => (
               <Meteorite key={meteorite.id} meteorite={meteorite} />
             ))}     
           </tbody>

@@ -7,15 +7,23 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
 
 
  class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       meteoritesData: [],
       searchTerm: ''
       
     }
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
+   handleSearchChange(searchTerm) {
+     this.setState({
+       searchTerm: searchTerm
+     });
+   }
+
+    
   getMeteoriteData = () => 
     fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
      .then(response => response.json())
@@ -32,10 +40,16 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
     <div className="App">
           <header className="App-header">
             <h1>Meteorite Explorer</h1>
-            <SearchPanel searchTerm={this.state.searchTerm} />
+            <SearchPanel 
+              searchTerm={this.state.searchTerm}
+              onSearchChange={this.handleSearchChange} 
+            />
           </header>
           <main>
-            <SearchResult meteoritesData={this.state.meteoritesData} />
+            <SearchResult 
+              searchTerm={this.state.searchTerm} 
+              meteoritesData={this.state.meteoritesData} 
+            />
           </main>
           <footer>
 
