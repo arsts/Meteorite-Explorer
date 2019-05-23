@@ -40,12 +40,12 @@ import SearchResult from './comopnents/SearchResult/SearchResult';
     <div className="App">
           <header className="App-header">
             <h1>Meteorite Explorer</h1>
+          </header>
+          <main>
             <SearchPanel 
               searchTerm={this.state.searchTerm}
               onSearchChange={this.handleSearchChange} 
             />
-          </header>
-          <main>
             <SearchResult 
               searchTerm={this.state.searchTerm} 
               meteoritesData={this.state.meteoritesData} 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Meteorite from '../Meteorite/Meteorite';
-
+import { Container } from 'react-bootstrap';
 
 
 
@@ -12,28 +12,30 @@ export class SearchResult extends React.Component {
     
     return (
       
-      
-      <Table responsive striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Id</th>
-              <th>Name Type</th>
-              <th>Rec Class</th>
-              <th>Mass (g)</th>
-              <th>Fall</th>
-              <th>Year</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            {filteredMeteorites.map(meteorite => (
-              <Meteorite key={meteorite.id} meteorite={meteorite} />
-            ))}     
-          </tbody>
-        </Table>   
+      <Container>
+        <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Name Type</th>
+                <th>Rec Class</th>
+                <th>Mass (g)</th>
+                <th>Fall</th>
+                <th>Year</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {filteredMeteorites.map(meteorite => (
+                <Meteorite key={meteorite.id} meteorite={meteorite} />
+              ))}     
+            </tbody>
+          </Table>   
+
+      </Container>
       )   
     } 
   } 
