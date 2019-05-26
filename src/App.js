@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchPanel from './comopnents/SearchPanel/SearchPanel';
 import SearchResult from './comopnents/SearchResult/SearchResult';
-import { Layout, Menu, Breadcrumb, message } from 'antd';
+import { Layout, message } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,29 +14,37 @@ const { Header, Content, Footer } = Layout;
     this.state = {
       meteoritesData: [],
       searchTerm: ''
+      
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-   onSearchChange = (event) => {
-     this.setState({
-       searchTerm: event.target.value
-     });
+   handleSubmit(event) {
+      if(event.target.value !== '') {
+        this.setState({
+          searchTerm: event.target.value
+        });
+      } else {
+        return message.warn('Your meteorite search is empty')
+      }
+
    }
-    
+ 
   getMeteoriteData = () => 
-    fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
-     .then(response =>
-      {if(response.status === 200) {
-        return response.json()
-        } else {
-        return message.error('This is a message of error')
-        }}
-      )
-     .then(data => this.setState({'meteoritesData': data}));
+    fetch("https://data.nasa.gov/resource/gh4g-9sfh.jsonaa")
+      .then(response =>
+        {if(response.status === 200) {
+          return response.json() 
+          // && message.success('Fetched meteorites')
+          } else {
+          return message.error('Meteorites not fetched')
+          }}
+        )
+      .catch(err => console.log(err))
+      .then(data => this.setState({'meteoritesData': data}))
 
   componentDidMount() {
     this.getMeteoriteData();
-    console.log(this.state.meteoritesData);
   }
   
   
@@ -48,14 +56,14 @@ const { Header, Content, Footer } = Layout;
           </Header>
          <Content style={{ padding: '0 50px' }}>
           <SearchPanel 
-            searchTerm={this.state.searchTerm}
-            // onSubmit={this.handleSubmit}???
-            onSearchChange={this.onSearchChange} 
+            onSubmit={this.handleSubmit}
+            onSearchChange={this.handleChange} 
             style={{ margin: '16px 0' }}
           />
           <SearchResult 
-            searchTerm={this.state.searchTerm} 
-            meteoritesData={this.state.meteoritesData} 
+            searchTerm={this.state.searchTerm}
+            filterMeteorites={this.filterMeteorites} 
+            meteoritesData={this.state.meteoritesData}
           />
           </Content>
           <Footer 
