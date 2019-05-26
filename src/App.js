@@ -31,7 +31,7 @@ const { Header, Content, Footer } = Layout;
    }
  
   getMeteoriteData = () => 
-    fetch("https://data.nasa.gov/resource/gh4g-9sfh.jsonaa")
+    fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
       .then(response =>
         {if(response.status === 200) {
           return response.json() 
