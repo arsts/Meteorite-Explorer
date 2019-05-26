@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchPanel from './comopnents/SearchPanel/SearchPanel';
 import SearchResult from './comopnents/SearchResult/SearchResult';
-import { Layout, message } from 'antd';
+import { Layout, message, Button } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -68,7 +68,10 @@ const { Header, Content, Footer } = Layout;
           </Content>
           <Footer 
           style={{ textAlign: 'center' }}>
-            Footer
+          <Button 
+            type="primary" shape="circle" icon="github"
+            href="https://github.com/arsts/meteorite-explorer"
+          />
           </Footer>
       </Layout>   
     )
