@@ -1,14 +1,10 @@
 import React from 'react';
-// import Meteorite from '../Meteorite/Meteorite';
 import { Table } from 'antd';
 
 const { Column } = Table;
 
 export class SearchResult extends React.Component {
   render() {
-    // const filteredMeteorites = ;
-    
-         
     return (
       <Table 
         dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 

@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchPanel from './comopnents/SearchPanel/SearchPanel';
 import SearchResult from './comopnents/SearchResult/SearchResult';
-import { Layout, message, Button } from 'antd';
+import { Layout, message, Button, Icon } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
-
-
- class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {

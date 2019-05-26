@@ -2,18 +2,15 @@
 
 
 .App-header {
-  /* background-color: #282c34; */
-  
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-  font-size: calc(10px + 2vmin);
-  /* color: white; */
+  align-items: center; 
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  color: white;
+  font-size: calc(10px + 2vmin);
 }
+
 
 
