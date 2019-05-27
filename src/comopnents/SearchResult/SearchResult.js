@@ -8,7 +8,9 @@ export class SearchResult extends React.Component {
     return (
       <Table 
         dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 
-      size="middle">
+        size="middle"
+        rowKey="id"
+        >
         <Column title="Name" dataIndex="name" key="name" />
         <Column title="Id" dataIndex="id" key="id" />
         <Column title="Name Type" dataIndex="nametype" key="nametype" />
