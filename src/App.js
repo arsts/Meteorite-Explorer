@@ -11,21 +11,19 @@ class App extends Component {
     super(props);
     this.state = {
       meteoritesData: [],
-      searchTerm: ''
-      
+      searchTerm: '' 
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-   handleSubmit(event) {
-      if(event.target.value !== '') {
+   handleSubmit(value, event) {
+      if(value !== '') {
         this.setState({
-          searchTerm: event.target.value
+          searchTerm: value
         });
       } else {
-        return message.warn('Your meteorite search is empty')
+        return message.warn('Your meteorite search is empty') && this.setState({ searchTerm: '' })
       }
-
    }
  
   getMeteoriteData = () => 
@@ -45,7 +43,6 @@ class App extends Component {
     this.getMeteoriteData();
   }
   
-  
   render() {
     return (     
       <Layout>
@@ -54,8 +51,7 @@ class App extends Component {
           </Header>
          <Content style={{ padding: '0 50px' }}>
           <SearchPanel 
-            onSubmit={this.handleSubmit}
-            onSearchChange={this.handleChange} 
+            onSubmit={this.handleSubmit} 
             style={{ margin: '16px 0' }}
           />
           <SearchResult 

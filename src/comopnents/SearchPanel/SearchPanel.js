@@ -10,8 +10,7 @@ class SearchPanel extends Component {
         placeholder="Search meteorite..."
         enterButton="Search"
         size="large"
-        onChange={this.props.onSearchChange}
-        onPressEnter={this.props.onSubmit}
+        onSearch={this.props.onSubmit}
         style={{ margin: '1em 0 1em 0' }}
       />
     )
