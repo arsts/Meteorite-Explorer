@@ -21,7 +21,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meteoritesData: [],
+      // meteoritesData: [],
       searchTerm: '' 
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,13 +50,16 @@ class App extends Component {
           }}
         )
       .catch(err => console.log(err))
-      .then(data => this.props.dispatch(GET_METEORITES_DATA(data)))
+      .then(data =>  this.props.dispatch(GET_METEORITES_DATA(data))
+        )
 
   componentDidMount() {
     this.getMeteoriteData();
   }
   
   render() {
+
+    
     return (
       
         <Layout>
@@ -71,7 +74,7 @@ class App extends Component {
             <SearchResult 
               searchTerm={this.state.searchTerm}
               filterMeteorites={this.filterMeteorites} 
-              meteoritesData={this.state.meteoritesData}
+              
             />
             </Content>
             <Footer 

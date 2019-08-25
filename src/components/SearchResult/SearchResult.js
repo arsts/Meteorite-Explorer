@@ -1,13 +1,33 @@
 import React from 'react';
-import { Table } from 'antd';
-
+import { connect } from 'react-redux';
+import { Table, Divider } from 'antd';
+import store from 'c:/Users/A/Documents/WebDev/meteorite-explorer/src/store'
 const { Column } = Table;
 
+const mapStateToProps = state => {
+  return state.meteoritesData
+}
+
+// this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))
+
 export class SearchResult extends React.Component {
+
+  fillTable = (meteoritesData) => {
+    return meteoritesData.filter(meteorite => meteorite.name
+      .toLowerCase()
+      .includes(this.props.searchTerm.toLowerCase()))
+  }
+
   render() {
+    const test = this.props.meteoritesData;
+    console.log([...test].length());
+    
+    // console.log(this.props.meteoritesData);
+    
+    
     return (
       <Table 
-        dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 
+        dataSource={""} 
         size="middle"
         rowKey="id"
         >
@@ -25,7 +45,7 @@ export class SearchResult extends React.Component {
     } 
   } 
 
-export default SearchResult
+export default connect(mapStateToProps)(SearchResult)
 
 
 

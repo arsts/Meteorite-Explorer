@@ -6,14 +6,26 @@ const initialState = {
 };
 
 function reducer(state = initialState, action={}) {
+  console.log(action.payload);
+  
+  console.log(action.type);
+  
+  
   switch (action.type) {
-    case GET_METEORITES_DATA:
+    case 'GET_METEORITES_DATA':
+      console.log('SUCCESS');
+      
       return {
-        meteoritesData: Object.assign({}, state, {meteoritesData: action.payload})
+        meteoritesData: Object.assign({}, state, {
+          meteoritesData: action.payload
+        })
+        
       }; 
         default:
       return state;
   }
 }
+
+
 
 export default reducer;
