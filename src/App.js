@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchPanel from './comopnents/SearchPanel/SearchPanel';
-import SearchResult from './comopnents/SearchResult/SearchResult';
+import SearchPanel from './components/SearchPanel/SearchPanel';
+import SearchResult from './components/SearchResult/SearchResult';
 import { Layout, message, Button } from 'antd';
 
 const { Header, Content, Footer } = Layout;
