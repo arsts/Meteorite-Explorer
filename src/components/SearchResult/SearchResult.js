@@ -11,9 +11,7 @@ const mapStateToProps = (state) => {
 }
 
 export class SearchResult extends React.Component {
-  render() {
-    console.log(this.props.searchTerm);
-    
+  render() {    
     return (
       <Table 
         dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 

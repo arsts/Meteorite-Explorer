@@ -4,7 +4,7 @@ const initialState = {
   searchTerm: ''
 };
 
-const searchMeteoritesReducer = (state = initialState, action = {}) => {  
+const searchMeteoritesReducer = (state = initialState, action = {}) => {    
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return Object.assign({}, state, {searchTerm: action.payload})
