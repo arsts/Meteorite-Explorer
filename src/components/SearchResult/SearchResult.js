@@ -1,10 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Table } from 'antd';
 
 const { Column } = Table;
 
+const mapStateToProps = (state) => {
+  return {
+    searchTerm: state.searchTerm
+  };
+}
+
 export class SearchResult extends React.Component {
   render() {
+    console.log(this.props.searchTerm);
+    
     return (
       <Table 
         dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 
@@ -25,7 +34,7 @@ export class SearchResult extends React.Component {
     } 
   } 
 
-export default SearchResult
+export default connect(mapStateToProps)(SearchResult);
 
 
 

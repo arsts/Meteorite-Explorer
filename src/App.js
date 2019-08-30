@@ -10,21 +10,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meteoritesData: [],
-      searchTerm: '' 
+      meteoritesData: []
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-   handleSubmit(value, event) {
-      if(value !== '') {
-        this.setState({
-          searchTerm: value
-        });
-      } else {
-        return message.warn('Your meteorite search is empty') && this.setState({ searchTerm: '' })
-      }
-   }
+  //  handleSubmit(value, event) {
+  //     if(value !== '') {
+  //       this.setState({
+  //         searchTerm: value
+  //       });
+  //     } else {
+  //       return message.warn('Your meteorite search is empty') && this.setState({ searchTerm: '' })
+  //     }
+  //  }
  
   getMeteoriteData = () => 
     fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
@@ -50,13 +49,10 @@ class App extends Component {
             <h1>Meteorite Explorer</h1>
           </Header>
          <Content style={{ padding: '0 50px' }}>
-          <SearchPanel 
-            onSubmit={this.handleSubmit} 
+          <SearchPanel  
             style={{ margin: '16px 0' }}
           />
-          <SearchResult 
-            searchTerm={this.state.searchTerm}
-            filterMeteorites={this.filterMeteorites} 
+          <SearchResult
             meteoritesData={this.state.meteoritesData}
           />
           </Content>
