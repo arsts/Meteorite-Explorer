@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setSearchField } from '../../actions';
+import { setSearchField } from '../actions';
 import { Input } from 'antd';
 
 const Search = Input.Search;
