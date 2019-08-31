@@ -1,13 +1,43 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { requestMeteorites } from '../actions';
 import { Table } from 'antd';
+
+
 
 const { Column } = Table;
 
+const mapStateToProps = (state) => {
+  return {
+    searchTerm: state.searchMeteorites.searchTerm,
+    meteorites: state.requestMeteorites.meteorites,
+    isPending: state.requestMeteorites.isPending,
+    error: state.requestMeteorites.error
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestMeteorites: () => dispatch(requestMeteorites())
+  }
+}
+
+
+
 export class SearchResult extends React.Component {
+
+  componentDidMount() {
+    this.props.onRequestMeteorites()
+  }
+
   render() {
+
+    const {meteorites, isPending, error} = this.props;
+    const filteredMeteorites = meteorites.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()));
+
     return (
       <Table 
-        dataSource={this.props.meteoritesData.filter(meteorite => meteorite.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))} 
+        dataSource={filteredMeteorites} 
         size="middle"
         rowKey="id"
         >
@@ -25,7 +55,7 @@ export class SearchResult extends React.Component {
     } 
   } 
 
-export default SearchResult
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult);
 
 
 

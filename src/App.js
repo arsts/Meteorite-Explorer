@@ -1,48 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchPanel from './comopnents/SearchPanel/SearchPanel';
-import SearchResult from './comopnents/SearchResult/SearchResult';
+import SearchPanel from './components/SearchPanel';
+import SearchResult from './components/SearchResult';
 import { Layout, message, Button } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      meteoritesData: [],
-      searchTerm: '' 
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-   handleSubmit(value, event) {
-      if(value !== '') {
-        this.setState({
-          searchTerm: value
-        });
-      } else {
-        return message.warn('Your meteorite search is empty') && this.setState({ searchTerm: '' })
-      }
-   }
- 
-  getMeteoriteData = () => 
-    fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
-      .then(response =>
-        {if(response.status === 200) {
-          return response.json() 
-          // && message.success('Fetched meteorites')
-          } else {
-          return message.error('Meteorites not fetched')
-          }}
-        )
-      .catch(err => console.log(err))
-      .then(data => this.setState({'meteoritesData': data}))
-
-  componentDidMount() {
-    this.getMeteoriteData();
-  }
-  
+    
   render() {
     return (     
       <Layout>
@@ -50,15 +15,10 @@ class App extends Component {
             <h1>Meteorite Explorer</h1>
           </Header>
          <Content style={{ padding: '0 50px' }}>
-          <SearchPanel 
-            onSubmit={this.handleSubmit} 
+          <SearchPanel  
             style={{ margin: '16px 0' }}
           />
-          <SearchResult 
-            searchTerm={this.state.searchTerm}
-            filterMeteorites={this.filterMeteorites} 
-            meteoritesData={this.state.meteoritesData}
-          />
+          <SearchResult />
           </Content>
           <Footer 
           style={{ textAlign: 'center' }}>
