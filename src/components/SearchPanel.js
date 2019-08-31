@@ -6,6 +6,8 @@ import { Input } from 'antd';
 const Search = Input.Search;
 
 const mapStateToProps = (state) => {
+  console.log(state);
+  
   return {
     searchTerm: state.searchTerm
   };
