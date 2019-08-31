@@ -1,6 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import searchMeteoritesReducer from './reducers';
+import { createLogger } from 'redux-logger';
 
-const store = createStore(searchMeteoritesReducer);
+const logger = createLogger();
+const store = createStore(searchMeteoritesReducer, applyMiddleware(logger));
 
 export default store;
